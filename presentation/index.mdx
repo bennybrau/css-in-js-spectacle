@@ -1,0 +1,225 @@
+import { Cite, Notes, Text, Appear, Image } from 'spectacle';
+import {DarkSlide, CodeSlide} from './slides';
+import RegularComponent from './regular-component';
+import BGImage from './custom-components/bg-image';
+import { Box, Flex, Stack, Square } from 'gh-spacing-components';
+
+<BGImage src={require('file-loader!./images/tsarbomba.jpg')} />
+
+# CSS-in-JS  😱
+
+---
+
+### My Goal is to get you
+
+<Flex mt={50}>
+  <Box width={1/3}>
+    <Stack y={2}>
+      <Box fontSize={100}>🙄</Box>
+    </Stack>
+    <Box>
+      <Text>From this...</Text>
+    </Box>
+  </Box>
+
+  <Box width={1/3}>
+    <Stack y={2}>
+      <Box fontSize={100}>🤔</Box>
+    </Stack>
+    <Box>
+      <Text>To this...</Text>
+    </Box>
+  </Box>
+
+  <Box width={1/3}>
+    <Stack y={2}>
+      <Box fontSize={100}>😍</Box>
+    </Stack>
+    <Box>
+      <Text>Or even this.</Text>
+    </Box>
+  </Box>
+</Flex>
+
+<Notes>
+  My goal is for people to come out of this presentation with a cautiously optimisitic view of CSS-in-JS and to abandon some misconceptions about what it actually is.
+  CSS-in-JS has become increasingly popular in the React community and the toolset has matured significantly.
+  We are currently piloting its use in the new external Menus editor subapp and have had really positive vibes so far. 
+</Notes>
+
+---
+
+### Why not just CSS-in-CSS?
+
+<Box my={75}>
+  <Appear>
+    <Square inset={10}>
+      <Text>Implicit global scope</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>Easy to cause unintended consequences</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>CSS is primarily a document-based architecture</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>Cascading rules can cause problems: !important</Text>
+    </Square>
+  </Appear>
+</Box>
+
+<Notes>
+  First, I want to review the problems with CSS.
+  CSS was designed at a time in the web when we were just styling documents, not creating complex web apps.
+  In the world of component-based frontend architectures like React and Vue, cascading style rules can cause real headaches.
+  Which lead to nasty things like !important.
+</Notes> 
+
+---
+
+### What about BEM, SASS, LESS?
+
+<Notes>
+  Technology like SASS and LESS have come along and at least give us the ability to modularize and reuse CSS
+  through mixins and variables. 
+  Naming disciplines such as BEM have been developed to avoid style collisions between components in an application.
+  This can get us past most of the problems of plain old CSS.
+  However, there are some drawbacks.
+</Notes>
+
+---
+
+### Drawbacks
+
+<Box my={75}>
+  <Appear>
+    <Square inset={10}>
+      <Text>Another syntax to learn with SASS/LESS</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>Style still separate from our component logic</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>Can still have conflicts: SASS-quatch, anyone?</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>Hard to refactor/remove unused styles</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>BEM Naming Fatigue</Text>
+    </Square>
+  </Appear>
+</Box>
+
+<Notes>
+  Even though SASS/LESS and BEM can help a developer get past some of the inherit problems with CSS, not all is rosy.
+  SASS and LESS each have a unique syntax which is another thing that must be learned by the developer.  They generally
+  require to be executed as part of a build process to generate CSS for the application.  We are still keeping our styles
+  in separate files away from the other logic of our application components which must be managed as part of the code.
+  With BEM, it requires skill to name things appropriately so that there aren't collisions.  And we all know how hard
+  naming is in software development.  Is this a Block, modifier, element?  If we integrate a third party library, there could
+  still be a possiblity that there will be style conflicts if we have a naming collision.
+</Notes>
+
+---
+
+<Flex justifyContent="center">
+  <Box>
+    <Image style={{ width: '870px', height: '500px', backgroundSize: 'contain'}} src={require('file-loader!./images/how-i-spend-time-writing-css.jpg')} />
+  </Box>
+</Flex>
+
+<Box mt={50} fontSize={14}>
+  <Flex justifyContent="center">
+    <Box>
+      <a target="_blank" href="https://www.reddit.com/r/css/comments/74anpd/how_i_spend_my_time_writing_css_this_is_so_true/">
+        https://www.reddit.com/r/css/comments/74anpd/how_i_spend_my_time_writing_css_this_is_so_true/
+      </a>
+    </Box>
+  </Flex>
+</Box>
+
+---
+
+### Kurt's BEM exercise
+
+<Box mt={50} fontSize={18}>
+  <Flex justifyContent="center">
+    <Box>
+      <a target="_blank" href="https://docs.google.com/spreadsheets/d/1_Hv5EnOuPjkrd8J247uzv1PxU3qsLr1IhnSzC_wyxxI/edit#gid=0">
+        https://docs.google.com/spreadsheets/d/1_Hv5EnOuPjkrd8J247uzv1PxU3qsLr1IhnSzC_wyxxI/edit#gid=0
+      </a>
+    </Box>
+  </Flex>
+</Box>
+
+<Notes>
+  Kurt sent out a surveymonkey that had two relatively simple components: A promotional tile with a CTA button, and a Footer
+  that would be rendered on a website.
+  Given the JSX/HTML to render these components, he asked what would the CSS classnames be using a BEM approach.
+  The variety of answers highlights the problem of BEM across a large organization.  Indeed it is the universal problem of Naming in
+  software development.
+</Notes>
+
+---
+
+### So, what exactly is CSS-in-JS?
+
+---
+
+### What it is NOT
+
+```javascript
+  const styles = {
+    color: white, 
+    backgroundColor: black
+  };
+  <p style={styles}>inline style!</p>
+```
+
+<Notes>
+  When CSS-in-JS was first proposed, this was the solution.  Using inline styles.  Technically, that works.
+  However, it has serious flaws.  You can't use pseudo selectors like :disabled, :before, :nth-child.
+  Media queries are also not going to work with inline styles.
+  There are some libraries like Radium that go this route and add some of the needed CSS stuff back...but, this 
+  approach has gone out of favor.
+</Notes>
+
+---
+
+### What it IS
+
+Let's look at [styled-components](https://www.styled-components.com/).
+
+---
+
+### TODO: link to codepen
+
+---
+
+### TODO: Show examples from gh-spacing-components (Storybook)
+
+---
+
+### Some Alternatives
+* [CSS Modules](https://glenmaddern.com/articles/css-modules)
+* [LitElement](https://lit-element.polymer-project.org/) - Shadow DOM
+
+---
+
+<BGImage src={require('file-loader!./images/tsarbomba.jpg')} />
+That's all folks.
