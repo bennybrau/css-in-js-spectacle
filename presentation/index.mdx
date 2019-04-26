@@ -265,22 +265,37 @@ Let's look at [styled-components](https://www.styled-components.com/).
 <Box mt={60}>
   <Appear>
     <Square inset={10}>
-      <Text>Style and Logic isolated to Component scope</Text>
+      <Text>Isolates styles to the component</Text>
     </Square>
   </Appear>
   <Appear>
     <Square inset={10}>
-      <Text>Can use all of CSS (including :before, :nth-child, etc).</Text>
+      <Text>Exposes component props</Text>
     </Square>
   </Appear>
   <Appear>
     <Square inset={10}>
-      <Text>Tagged template literals allow sharing of JS props with CSS</Text>
+      <Text>Only renders critical CSS</Text>
     </Square>
   </Appear>
   <Appear>
     <Square inset={10}>
-      <Text>Only the actively rendered components CSS is inserted into the DOM</Text>
+      <Text>Reuses what's existing</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>Automates CSS selector naming</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>Dead code elimination</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>No additional build step</Text>
     </Square>
   </Appear>
 </Box>
