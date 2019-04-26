@@ -207,7 +207,7 @@ import { Box, Flex, Stack, Square } from 'gh-spacing-components';
 Let's look at [styled-components](https://www.styled-components.com/).
 
 <Square inset={5}>
-  <Link href="https://codepen.io/bennybrau/pen/JVwGzo">Demo</Link>
+  <a target="_blank" href="https://codepen.io/bennybrau/pen/JVwGzo">Demo</a>
 </Square>
 
 ---
@@ -215,7 +215,7 @@ Let's look at [styled-components](https://www.styled-components.com/).
 ### So, what's the big deal?
 
 <Box mt={60}>
-<Appear>
+  <Appear>
     <Square inset={10}>
       <Text>Style and Logic isolated to Component scope</Text>
     </Square>
@@ -267,7 +267,58 @@ Let's look at [styled-components](https://www.styled-components.com/).
   </Flex>
 </Box>
 
+<Box mt={50}>
+  <Appear>
+    <Square inset={10}>
+      <Text><code>styled()</code> is a component factory</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>on <code>componentWillMount()</code>, the template literal is evaluated</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>The style strings are hashed into a unique identifier using <a href="https://www.wikiwand.com/en/MurmurHash">MurmurHash</a></Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>That hash value and style strings are turned into a CSS stylesheet using <a href="https://stylis.js.org/">Stylis</a></Text>
+    </Square>
+  </Appear>
+</Box>
 
+---
+
+###### This
+```jsx
+const Text = styled.div`
+  color: white,
+  background: black
+`
+
+<Text>Hello CSS-in-JS</Text>
+```
+---
+
+###### Becomes
+```css
+<head>
+<style>
+  .jsZVzX {
+    color: white;
+    background: black;
+  }
+</style>
+</head>
+
+...
+...
+
+<div class="sc-bdVaJa jsZVzX">Hello CSS-in-JS</div>
+```
 ---
 
 ### Other CSS-in-JS options
