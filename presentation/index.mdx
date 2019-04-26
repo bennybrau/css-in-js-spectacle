@@ -1,4 +1,4 @@
-import { Cite, Notes, Text, Appear, Image } from 'spectacle';
+import { Cite, Notes, Text, Appear, Image, Link } from 'spectacle';
 import {DarkSlide, CodeSlide} from './slides';
 import RegularComponent from './regular-component';
 import BGImage from './custom-components/bg-image';
@@ -188,6 +188,7 @@ import { Box, Flex, Stack, Square } from 'gh-spacing-components';
     color: white, 
     backgroundColor: black
   };
+
   <p style={styles}>inline style!</p>
 ```
 
@@ -205,17 +206,94 @@ import { Box, Flex, Stack, Square } from 'gh-spacing-components';
 
 Let's look at [styled-components](https://www.styled-components.com/).
 
----
-
-### TODO: link to codepen
-
----
-
-### TODO: Show examples from gh-spacing-components (Storybook)
+<Square inset={5}>
+  <Link href="https://codepen.io/bennybrau/pen/JVwGzo">Demo</Link>
+</Square>
 
 ---
 
-### Some Alternatives
+### So, what's the big deal?
+
+<Box mt={60}>
+<Appear>
+    <Square inset={10}>
+      <Text>Style and Logic isolated to Component scope</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>Can use all of CSS (including :before, :nth-child, etc).</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>Tagged template literals allow sharing of JS props with CSS</Text>
+    </Square>
+  </Appear>
+  <Appear>
+    <Square inset={10}>
+      <Text>Only the actively rendered components CSS is inserted into the DOM</Text>
+    </Square>
+  </Appear>
+</Box>
+
+<Notes>
+  True encapsulation of style and logic in a single component.  One import.  No collision possible.
+  styled-components generates dynamic CSS classnames based on hash algo and creates a stylesheet injected
+  at runtime.
+  
+  Can use ALL of CSS because it is CSS.  Just dynamically created and scoped to a single component.
+
+  Tagged template literals are the how styled-components works.  the styled tag is a function that can 
+  take a template literal, which removes the separation between CSS and JS.  You get the best of both.
+
+  Because styled-components creates the style elements for each defined component as needed, it will ONLY create CSS
+  that is actually used.  There is no bloat from unused CSS.  Conversely, this makes code cleanup
+  automatic.  No more trying to figure out if a CSS rule is being used anywhere or not.
+
+</Notes>
+
+---
+
+### How does this work?
+
+<Box mt={50} fontSize={20}>
+  <Flex justifyContent="center">
+    <Box>
+      <a target="_blank" href="https://medium.com/styled-components/how-styled-components-works-618a69970421">
+        Good article that does a deep dive on styled-components
+      </a>
+    </Box>
+  </Flex>
+</Box>
+
+
+---
+
+### Other CSS-in-JS options
+
+* [Emotion](https://emotion.sh/docs/introduction)
+* [Glamorous](https://glamorous.rocks/)
+* [JSS](https://cssinjs.org/)
+
+---
+
+<Image src={require('file-loader!./images/css-in-js-downloads.png')} />
+
+<Box mt={50} fontSize={20}>
+  <Flex justifyContent="center">
+    <Box>
+      <a target="_blank" href="https://www.npmtrends.com/styled-components-vs-radium-vs-jss-vs-glamorous-vs-emotion-vs-styletron">
+        NPM Trends
+      </a>
+    </Box>
+  </Flex>
+</Box>
+
+---
+
+### Some Alternative approaches
+
 * [CSS Modules](https://glenmaddern.com/articles/css-modules)
 * [LitElement](https://lit-element.polymer-project.org/) - Shadow DOM
 
