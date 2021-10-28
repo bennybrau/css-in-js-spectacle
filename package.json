@@ -14,15 +14,15 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@grubhubprod/gh-cookbook-react": "^5.0.35",
     "deepmerge": "^2.1.1",
-    "gh-spacing-components": "^2.1.1",
     "normalize.css": "8.0.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-transition-group": "2",
     "spectacle": "5.5.0",
     "spectacle-renderer": "^0.0.3",
-    "styled-components": "^4.2.0"
+    "styled-components": "~5.1.1"
   },
   "devDependencies": {
     "@mdx-js/loader": "^0.15.0-2",
@@ -66,7 +66,7 @@
     "rimraf": "^2.6.2",
     "stringify-object": "^3.2.2",
     "style-loader": "^0.22.0",
-    "surge": "latest",
+    "surge": "^0.23.0",
     "url-loader": "^1.0.1",
     "webpack": "4.16.5",
     "webpack-cli": "^3.1.0",

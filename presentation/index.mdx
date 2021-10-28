@@ -2,7 +2,7 @@ import { Cite, Notes, Text, Appear, Image, Link } from 'spectacle';
 import {DarkSlide, CodeSlide} from './slides';
 import RegularComponent from './regular-component';
 import BGImage from './custom-components/bg-image';
-import { Box, Flex, Stack, Square } from 'gh-spacing-components';
+import { Box, Flex, Stack, Square, Copy } from '@grubhubprod/gh-cookbook-react' ;
 
 <BGImage src={require('file-loader!./images/tsarbomba.jpg')} />
 
@@ -110,17 +110,12 @@ import { Box, Flex, Stack, Square } from 'gh-spacing-components';
   </Appear>
   <Appear>
     <Square inset={10}>
-      <Text>Can still have conflicts: SASS-quatch, anyone?</Text>
+      <Text>Hard to refactor/remove dead styles</Text>
     </Square>
   </Appear>
   <Appear>
     <Square inset={10}>
-      <Text>Hard to refactor/remove unused styles</Text>
-    </Square>
-  </Appear>
-  <Appear>
-    <Square inset={10}>
-      <Text>BEM Naming Fatigue</Text>
+      <Text>Naming fatigue</Text>
     </Square>
   </Appear>
 </Box>
@@ -229,7 +224,7 @@ import { Box, Flex, Stack, Square } from 'gh-spacing-components';
 
 ---
 
-### What it is NOT
+### Inline
 
 ```javascript
   const styles = {
@@ -250,12 +245,12 @@ import { Box, Flex, Stack, Square } from 'gh-spacing-components';
 
 ---
 
-### What it IS
+### We can do better
 
 Let's look at [styled-components](https://www.styled-components.com/).
 
-<Square inset={5}>
-  <a target="_blank" href="https://codepen.io/bennybrau/pen/JVwGzo">Demo</a>
+<Square mt={20} inset={5}>
+  <a target="_blank" href="https://codepen.io/bennybrau/pen/JVwGzo">Quick example</a>
 </Square>
 
 ---
@@ -270,7 +265,7 @@ Let's look at [styled-components](https://www.styled-components.com/).
   </Appear>
   <Appear>
     <Square inset={10}>
-      <Text>Exposes component props</Text>
+      <Text>Idiomatic to React - props</Text>
     </Square>
   </Appear>
   <Appear>
@@ -338,7 +333,7 @@ Let's look at [styled-components](https://www.styled-components.com/).
   </Appear>
   <Appear>
     <Square inset={10}>
-      <Text>on <code>componentWillMount()</code>, the template literal is evaluated</Text>
+      <Text>before <code>mount</code>, the template literal is evaluated</Text>
     </Square>
   </Appear>
   <Appear>
@@ -382,6 +377,11 @@ const Text = styled.div`
 
 <div class="sc-bdVaJa jsZVzX">Hello CSS-in-JS</div>
 ```
+
+<Notes>
+  Show the example from Kurts promo exercise.
+</Notes>
+
 ---
 
 ### Other CSS-in-JS options
@@ -406,12 +406,17 @@ const Text = styled.div`
 
 ---
 
-### Some Alternative approaches
+### Some additional reading
 
-* [CSS Modules](https://glenmaddern.com/articles/css-modules)
-* [LitElement](https://lit-element.polymer-project.org/) - Shadow DOM
+* [What actually is CSS-in-JS?](https://medium.com/dailyjs/what-is-actually-css-in-js-f2f529a2757)
+* [The state of CSS in JS](https://medium.com/@vviikk/the-state-of-css-css-in-js-how-styled-components-is-solving-the-problems-weve-had-for-decades-d8abbc8bc148)
+* [Server Side Rendering with Styled-components](https://medium.com/swlh/server-side-rendering-styled-components-with-nextjs-1db1353e915e)
+* [Our Cookbook Storybook](http://cookbook-web-react.ghbeta.com/)
 
 ---
 
 <BGImage src={require('file-loader!./images/tsarbomba.jpg')} />
-That's all folks.
+<Box>
+  <Stack y="md">That's all folks.</Stack>
+  Questions?
+</Box>
